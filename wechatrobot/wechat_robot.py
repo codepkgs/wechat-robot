@@ -1,8 +1,9 @@
-import json
-import requests
-import hashlib
 import base64
+import hashlib
+import json
 from pathlib import Path
+
+import requests
 
 
 class FileUploadError(Exception): pass
@@ -48,14 +49,16 @@ class WechatRobot:
 
     def send_text(self, content, at_mobiles=None):
         at_mobiles_list = []
-        if at_mobiles:
-            if isinstance(at_mobiles, str):
-                if at_mobiles.lower() == 'all':
-                    at_mobiles_list.append('@all')
-                else:
-                    at_mobiles_list.append(at_mobiles)
+        if isinstance(at_mobiles, str):
+            at_mobiles = at_mobiles.split(',')
+
+        at_mobiles = list(at_mobiles)
+
+        for member in at_mobiles:
+            if member.lower() == 'all':
+                at_mobiles_list.append('@all')
             else:
-                at_mobiles_list = list(at_mobiles)
+                at_mobiles_list.append(member)
 
         data = {
             'msgtype': 'text',
@@ -142,4 +145,3 @@ class WechatRobot:
         }
 
         return self._do_request(data)
-

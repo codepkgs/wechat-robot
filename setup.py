@@ -6,7 +6,7 @@ with open('README.md') as f:
 
 setup(
     name='wechatrobot',
-    version='1.0.2',
+    version='1.0.3',
     keywords='wechat, robot, wechatrobot, wechat-robot, wechat-webhook',
     description='send message to wechat robot',
     long_description=long_description,
