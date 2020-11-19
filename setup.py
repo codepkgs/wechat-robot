@@ -1,4 +1,3 @@
-
 from setuptools import setup, find_packages
 
 with open('README.md') as f:
@@ -6,7 +5,7 @@ with open('README.md') as f:
 
 setup(
     name='wechatrobot',
-    version='1.0.4',
+    version='1.0.5',
     keywords='wechat, robot, wechatrobot, wechat-robot, wechat-webhook',
     description='send message to wechat robot',
     long_description=long_description,

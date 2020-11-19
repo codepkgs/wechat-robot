@@ -49,10 +49,13 @@ class WechatRobot:
 
     def send_text(self, content, at_mobiles=None):
         at_mobiles_list = []
-        if isinstance(at_mobiles, str):
-            at_mobiles = at_mobiles.split(',')
+        if at_mobiles:
+            if isinstance(at_mobiles, str):
+                at_mobiles = at_mobiles.split(',')
 
-        at_mobiles = list(at_mobiles)
+            at_mobiles = list(at_mobiles)
+        else:
+            at_mobiles = []
 
         for member in at_mobiles:
             if member.lower() == 'all':
@@ -116,16 +119,10 @@ class WechatRobot:
 
     def _put_file(self, file_path):
         path = Path(file_path)
-        print(path.name)
         if not path.exists():
             raise FileNotFoundError('the file <{}> not found'.format(file_path))
 
         put_file_address = 'https://qyapi.weixin.qq.com/cgi-bin/webhook/upload_media?key={}&type=file'.format(self.key)
-        headers = {
-            'Content-Type': 'application/octet-stream',
-            'Content-Disposition': 'form-data; name="media"; filename={}; filelength={}'.format(path.name,
-                                                                                                path.stat().st_size)
-        }
 
         resp = requests.post(put_file_address,
                              files=[('media', (path.name, open(file_path, 'rb'), 'application/octet-stream'))])
