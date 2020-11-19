@@ -33,7 +33,7 @@ pip install wechatrobot
   wxrobot.send_text(content, at_mobiles=None)
 
   # content 为要发送的文本内容
-  # at_mobiles 需要 @ 人的手机号，可以是列表或字符串（多个人使用逗号分隔）。如果要 @所有人，则设置 at_mobiles='all'。@ 多个人时，指定 at_mobiles='18600000000,18600000001']
+  # at_mobiles 需要 @ 人的手机号，可以是列表或字符串（多个人使用逗号分隔）。如果要 @所有人，则设置 at_mobiles='all'。@ 多个人时，指定 at_mobiles='18600000000,18600000001'
   ```
 
 * 发送 `markdown` 消息
@@ -74,5 +74,5 @@ pip install wechatrobot
   # 签名
   wxrobot.send_file(file_path)
 
-  # file_path   要创建的本地文件路径。大小不能超过20M
+  # file_path   要上传的本地文件路径。大小不能超过20M
   ```
