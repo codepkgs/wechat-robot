@@ -42,7 +42,8 @@ pip install wechatrobot
   # 签名
   wxrobot.send_markdown(contents)
 
-  # contents 为可迭代对象，如列表、元组等。每一行为一个 markdown格式的字符串。
+  # 如果 contents 为列表、元组, 每一行为一个 markdown 格式的字符串。默认会在每个元素后增加一个 '\n' 换行符。
+  # 如果 contents 是字符串，则用户自己控制markdown的格式。
   # 支持的格式参考：https://work.weixin.qq.com/api/doc/90000/90136/91770#markdown%E7%B1%BB%E5%9E%8B
   ```
 

@@ -75,11 +75,16 @@ class WechatRobot:
 
     def send_markdown(self, contents):
         send_contents = ''
-        for content in contents:
-            if content.startswith('>'):
-                send_contents += '\n' + content
+
+        if isinstance(contents, (list, tuple)):
+            if len(contents) >= 1:
+                send_contents = contents[0] + '\n'
+                for content in contents[1:]:
+                    send_contents += content + '\n'
             else:
-                send_contents += '\n\n' + content
+                send_contents = contents[0]
+        else:
+            send_contents = contents
 
         data = {
             'msgtype': 'markdown',
